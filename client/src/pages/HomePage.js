@@ -13,9 +13,6 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  RadioGroup,
-  Radio,
-  FormControlLabel,
   Stack,
   Typography,
 } from "@mui/material";
@@ -194,23 +191,6 @@ const HomePage = () => {
             <Typography variant="body1" textAlign={"center"} color={"green"}>
               <i> Easy to find product following category </i>
             </Typography>
-            <Grid item>
-              <RadioGroup
-                value={radio}
-                onChange={(e) => setRadio(e.target.value)}
-                name="category"
-                row
-              >
-                {categories.map((category) => (
-                  <FormControlLabel
-                    key={category._id}
-                    value={category.name}
-                    control={<Radio />}
-                    label={category.name}
-                  />
-                ))}
-              </RadioGroup>
-            </Grid>
             <Typography
               variant="h4"
               sx={{
@@ -231,7 +211,7 @@ const HomePage = () => {
                     image={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
                     alt={p.name}
                   />
-                  <CardContent>
+                  <CardContent sx={{ marginBottom: "16px" }}>
                     <Typography variant="h5">{p.name}</Typography>
                     <Typography variant="h6">
                       {p.price.toLocaleString("en-US", {
